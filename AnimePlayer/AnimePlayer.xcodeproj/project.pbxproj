@@ -11,6 +11,8 @@
 		4211A74D2AD301CB00A334EB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4211A74C2AD301CB00A334EB /* ContentView.swift */; };
 		4211A74F2AD301CD00A334EB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4211A74E2AD301CD00A334EB /* Assets.xcassets */; };
 		4211A7522AD301CD00A334EB /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4211A7512AD301CD00A334EB /* Preview Assets.xcassets */; };
+		4211A75A2AD3022800A334EB /* ApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4211A7592AD3022800A334EB /* ApiService.swift */; };
+		4211A75D2AD3030100A334EB /* HomeScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4211A75C2AD3030100A334EB /* HomeScreenViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +21,8 @@
 		4211A74C2AD301CB00A334EB /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		4211A74E2AD301CD00A334EB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4211A7512AD301CD00A334EB /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		4211A7592AD3022800A334EB /* ApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiService.swift; sourceTree = "<group>"; };
+		4211A75C2AD3030100A334EB /* HomeScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +55,8 @@
 		4211A7492AD301CB00A334EB /* AnimePlayer */ = {
 			isa = PBXGroup;
 			children = (
+				4211A75B2AD302E000A334EB /* ViewModel */,
+				4211A7582AD3021100A334EB /* Service */,
 				4211A74A2AD301CB00A334EB /* AnimePlayerApp.swift */,
 				4211A74C2AD301CB00A334EB /* ContentView.swift */,
 				4211A74E2AD301CD00A334EB /* Assets.xcassets */,
@@ -65,6 +71,22 @@
 				4211A7512AD301CD00A334EB /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		4211A7582AD3021100A334EB /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				4211A7592AD3022800A334EB /* ApiService.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		4211A75B2AD302E000A334EB /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				4211A75C2AD3030100A334EB /* HomeScreenViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -138,7 +160,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				4211A74D2AD301CB00A334EB /* ContentView.swift in Sources */,
+				4211A75D2AD3030100A334EB /* HomeScreenViewModel.swift in Sources */,
 				4211A74B2AD301CB00A334EB /* AnimePlayerApp.swift in Sources */,
+				4211A75A2AD3022800A334EB /* ApiService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
