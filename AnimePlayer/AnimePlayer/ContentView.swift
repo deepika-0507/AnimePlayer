@@ -8,15 +8,9 @@
 import SwiftUI
 
 struct ContentView: View {
-    @StateObject var homeScreeViewModel = HomeScreenViewModel()
+//    @StateObject var homeScreeViewModel = HomeScreenViewModel()
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
-        }
-        .padding()
+        HomeScreenView()
     }
 }
 

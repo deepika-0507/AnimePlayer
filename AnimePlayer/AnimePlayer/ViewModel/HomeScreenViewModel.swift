@@ -10,9 +10,18 @@ import Foundation
 class HomeScreenViewModel: ObservableObject {
     
     let apiService = ApiService()
+    @Published var animeList: [AnimeDataModel] = []
     
-    init() {
-        Task { try await apiService.getAnimeForHomeScreen()}
+//    init() {
+//        Task { try await apiService.getAnimeForHomeScreen()}
+//    }
+    
+    func getAnimeList() async throws {
+        let animeList = try await apiService.getAnimeForHomeScreen()
+        
+        DispatchQueue.main.async {
+            self.animeList = animeList
+        }
     }
     
 }
