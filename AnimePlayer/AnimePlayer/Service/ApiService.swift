@@ -12,8 +12,11 @@ import Foundation
 class ApiService {
     let urlString = "https://api.jikan.moe/v4/anime"
     
-    func getAnimeForHomeScreen() async throws -> [AnimeDataModel] {
-        guard let url = URL(string: urlString) else {
+    var overallData: [AnimeDataModel] = []
+    
+    func getAnimeForHomeScreen(page: Int) async throws -> [AnimeDataModel] {
+        let urls = urlString+"?page=\(page)"
+        guard let url = URL(string: urls) else {
             throw APIResponseErrors.missingUrlError
         }
         
@@ -30,7 +33,12 @@ class ApiService {
             let decoder = JSONDecoder()
             decoder.keyDecodingStrategy = .convertFromSnakeCase
             let decodedData = try decoder.decode(AnimeListModel.self, from: data)
-            return decodedData.data
+            overallData = overallData + decodedData.data
+            if decodedData.pagination.hasNextPage && page < 3 {
+                return try await getAnimeForHomeScreen(page: page+1)
+            } else {
+                return overallData
+            }
         } catch {
             throw APIResponseErrors.decodingError
         }

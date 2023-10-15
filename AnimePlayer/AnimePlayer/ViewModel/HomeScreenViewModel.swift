@@ -17,7 +17,7 @@ class HomeScreenViewModel: ObservableObject {
 //    }
     
     func getAnimeList() async throws {
-        let animeList = try await apiService.getAnimeForHomeScreen()
+        let animeList = try await apiService.getAnimeForHomeScreen(page: 1)
         
         DispatchQueue.main.async {
             self.animeList = animeList
