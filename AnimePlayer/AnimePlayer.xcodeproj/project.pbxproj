@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		42058A852ADC24C800C3178C /* MyTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42058A842ADC24C800C3178C /* MyTabBar.swift */; };
 		4211A74B2AD301CB00A334EB /* AnimePlayerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4211A74A2AD301CB00A334EB /* AnimePlayerApp.swift */; };
 		4211A74D2AD301CB00A334EB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4211A74C2AD301CB00A334EB /* ContentView.swift */; };
 		4211A74F2AD301CD00A334EB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4211A74E2AD301CD00A334EB /* Assets.xcassets */; };
@@ -15,10 +16,13 @@
 		4211A75D2AD3030100A334EB /* HomeScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4211A75C2AD3030100A334EB /* HomeScreenViewModel.swift */; };
 		4211A7602AD42E5C00A334EB /* AnimeListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4211A75F2AD42E5C00A334EB /* AnimeListModel.swift */; };
 		4211A7632AD43DBE00A334EB /* HomeScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4211A7622AD43DBE00A334EB /* HomeScreenView.swift */; };
+		4213A37D2ADDA5C100EFB694 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4213A37C2ADDA5C100EFB694 /* SearchView.swift */; };
+		4213A37F2ADDA5EA00EFB694 /* NewReleasesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4213A37E2ADDA5EA00EFB694 /* NewReleasesView.swift */; };
 		42A3BEED2AD717A30091EE4E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42A3BEEC2AD717A30091EE4E /* Constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		42058A842ADC24C800C3178C /* MyTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTabBar.swift; sourceTree = "<group>"; };
 		4211A7472AD301CB00A334EB /* AnimePlayer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AnimePlayer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4211A74A2AD301CB00A334EB /* AnimePlayerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimePlayerApp.swift; sourceTree = "<group>"; };
 		4211A74C2AD301CB00A334EB /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -28,6 +32,8 @@
 		4211A75C2AD3030100A334EB /* HomeScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenViewModel.swift; sourceTree = "<group>"; };
 		4211A75F2AD42E5C00A334EB /* AnimeListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimeListModel.swift; sourceTree = "<group>"; };
 		4211A7622AD43DBE00A334EB /* HomeScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenView.swift; sourceTree = "<group>"; };
+		4213A37C2ADDA5C100EFB694 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
+		4213A37E2ADDA5EA00EFB694 /* NewReleasesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewReleasesView.swift; sourceTree = "<group>"; };
 		42A3BEEC2AD717A30091EE4E /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -110,6 +116,9 @@
 			isa = PBXGroup;
 			children = (
 				4211A7622AD43DBE00A334EB /* HomeScreenView.swift */,
+				42058A842ADC24C800C3178C /* MyTabBar.swift */,
+				4213A37C2ADDA5C100EFB694 /* SearchView.swift */,
+				4213A37E2ADDA5EA00EFB694 /* NewReleasesView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -193,7 +202,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				4211A74D2AD301CB00A334EB /* ContentView.swift in Sources */,
+				4213A37D2ADDA5C100EFB694 /* SearchView.swift in Sources */,
 				4211A75D2AD3030100A334EB /* HomeScreenViewModel.swift in Sources */,
+				4213A37F2ADDA5EA00EFB694 /* NewReleasesView.swift in Sources */,
+				42058A852ADC24C800C3178C /* MyTabBar.swift in Sources */,
 				4211A74B2AD301CB00A334EB /* AnimePlayerApp.swift in Sources */,
 				4211A7632AD43DBE00A334EB /* HomeScreenView.swift in Sources */,
 				42A3BEED2AD717A30091EE4E /* Constants.swift in Sources */,

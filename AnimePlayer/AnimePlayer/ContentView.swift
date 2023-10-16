@@ -8,9 +8,22 @@
 import SwiftUI
 
 struct ContentView: View {
-//    @StateObject var homeScreeViewModel = HomeScreenViewModel()
+    @State var selectedImage: TabItems = .house
     var body: some View {
-        HomeScreenView()
+        ZStack {
+            TabView(selection: $selectedImage) {
+                HomeScreenView()
+                    .tag(TabItems.house)
+                SearchView()
+                    .tag(TabItems.magnifyingglass)
+                NewReleasesView()
+                    .tag(TabItems.calendar)
+            }
+            VStack{
+                Spacer()
+                MyTabBar(selectedImage: $selectedImage)
+            }
+        }
     }
 }
 
