@@ -14,7 +14,7 @@ struct HomeScreenView: View {
         List(viewModel.animeList, id: \.malId) { anime in
             Text("\(anime.title)")
         } .onAppear {
-            Task { try await viewModel.getAnimeList() }
+            Task { try await viewModel.getCachedOrLoadList() }
         }
     }
 }

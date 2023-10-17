@@ -10,6 +10,7 @@ import Foundation
 class HomeScreenViewModel: ObservableObject {
     
     let apiService = ApiService()
+    let cacheDataManager = CacheDataManager()
     @Published var animeList: [AnimeDataModel] = []
     
 //    init() {
@@ -21,6 +22,32 @@ class HomeScreenViewModel: ObservableObject {
         
         DispatchQueue.main.async {
             self.animeList = animeList
+        }
+    }
+    
+    func getCachedOrLoadList() async throws {
+        let cachedData = cacheDataManager.retrieveData(key: "anime_list_overall")
+        
+        if let cachedData = cachedData {
+            do {
+                let decodedData = try JSONDecoder().decode([AnimeDataModel].self, from: cachedData)
+                DispatchQueue.main.async {
+                    self.animeList = decodedData
+                }
+            } catch {
+                throw APIResponseErrors.decodingError
+            }
+        } else {
+            let animeList = try await apiService.getAnimeForHomeScreen(page: 1)
+            do {
+                let data = try JSONEncoder().encode(animeList)
+                cacheDataManager.storeData(key: "anime_list_overall", value: data)
+            } catch {
+                throw APIResponseErrors.decodingError
+            }
+            DispatchQueue.main.async {
+                self.animeList = animeList
+            }
         }
     }
     

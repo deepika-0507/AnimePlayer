@@ -17,7 +17,7 @@ struct MyTabBar: View {
     
     @Binding var selectedImage: TabItems
     var body: some View {
-        HStack(spacing: 30.0){
+        HStack(spacing: 40.0){
             ForEach(TabItems.allCases, id: \.rawValue) { item in
                 Image(systemName: item.rawValue)
                     .renderingMode(.template)
@@ -29,7 +29,7 @@ struct MyTabBar: View {
         }
         .frame(maxWidth: .infinity)
         .padding()
-        .background(.black)
+        .background(.black.opacity(0.8))
     }
 }
 

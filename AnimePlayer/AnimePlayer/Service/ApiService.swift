@@ -23,7 +23,11 @@ class ApiService {
         let (data, response) = try await URLSession.shared.data(from: url)
         
         if let response = response as? HTTPURLResponse, response.statusCode != 200 {
-            throw APIResponseErrors.reponseCodeError
+            if page > 1 {
+                return overallData
+            } else {
+                throw APIResponseErrors.reponseCodeError
+            }
         }
         
 //        let dataString = String(decoding: data, as: UTF8.self)
