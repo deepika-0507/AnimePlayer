@@ -14,7 +14,7 @@ struct AnimeListModel: Codable {
 
 struct Pagination: Codable {
     let hasNextPage: Bool
-    let currentPage: Int
+//    let currentPage: Int
 }
 
 struct AnimeDataModel: Codable {
@@ -41,4 +41,25 @@ struct YoutubeUrl: Codable {
     let youtubeId: String?
     let url: String?
     let embedUrl: String?
+}
+
+struct RecomendedAnimeListModel: Codable {
+    let pagination: Pagination
+    let data: [RecomendedAnimeDataModel]
+}
+
+struct RecomendedAnimeDataModel: Codable {
+    let malId: String
+    let entry: [EntryModel]
+    let user: UserModel?
+}
+
+struct EntryModel: Codable {
+    let malId: Int
+    let title: String
+}
+
+struct UserModel: Codable {
+    let url: String
+    let username: String
 }

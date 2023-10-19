@@ -8,8 +8,19 @@
 import SwiftUI
 
 struct NewReleasesView: View {
+    @StateObject var viewModel = RecomendedScreenViewModel()
+    
     var body: some View {
-        Text("New Releases")
+        NavigationView {
+            List(viewModel.animeList, id: \.malId) { anime in
+                Text("\(anime.title)")
+            }
+            .navigationTitle("Recomended Animes")
+        }
+        .onAppear {
+            Task { try await viewModel.getAnimeList() }
+        }
+        
     }
 }
 
