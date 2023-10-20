@@ -7,15 +7,29 @@
 
 import Foundation
 
-class HomeScreenViewModel: ObservableObject {
+class HomeScreenViewModel: ObservableObject, ViewModel {
     
-    let apiService = ApiService()
+    let apiService = ApiService.shared
     let cacheDataManager = CacheDataManager()
     @Published var animeList: [AnimeDataModel] = []
     
-//    init() {
-//        Task { try await apiService.getAnimeForHomeScreen()}
-//    }
+    func fetchAnimeList() async throws {
+        do {
+            let animeList: AnimeListModel = try await apiService.genericMethod(urlString: Constants.shared.BASE_PATH)
+            DispatchQueue.main.async {
+                self.animeList = animeList.data
+            }
+        } catch {
+            print("error fetching data: \(error.localizedDescription)")
+        }
+    }
+}
+
+extension HomeScreenViewModel {
+    
+    //    init() {
+    //        Task { try await apiService.getAnimeForHomeScreen()}
+    //    }
     
     func getAnimeList() async throws {
         let animeList = try await apiService.getAnimeForHomeScreen(page: 1)
@@ -51,4 +65,14 @@ class HomeScreenViewModel: ObservableObject {
         }
     }
     
+    func getDataFromGenericMethod() async throws {
+        do {
+            let animeList: AnimeListModel = try await apiService.genericMethod(urlString: Constants.shared.BASE_PATH)
+            DispatchQueue.main.async {
+                self.animeList = animeList.data
+            }
+        } catch {
+            print("error fetching data: \(error.localizedDescription)")
+        }
+    }
 }

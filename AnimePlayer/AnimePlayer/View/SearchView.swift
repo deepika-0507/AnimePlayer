@@ -18,7 +18,7 @@ struct SearchView: View {
                 .onSubmit() {
                     viewModel.key = searchedKey
                     Task {
-                        try await viewModel.getAnimeList()
+                        try await viewModel.fetchAnimeList()
                     }
                 }
             List(viewModel.animeList, id: \.malId) { anime in

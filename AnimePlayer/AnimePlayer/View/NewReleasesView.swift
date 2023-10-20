@@ -18,7 +18,7 @@ struct NewReleasesView: View {
             .navigationTitle("Recomended Animes")
         }
         .onAppear {
-            Task { try await viewModel.getAnimeList() }
+            Task { try await viewModel.fetchAnimeList() }
         }
         
     }

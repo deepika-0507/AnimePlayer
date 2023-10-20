@@ -8,7 +8,7 @@
 import Foundation
 
 final class Constants {
-    let shared = Constants()
+    static let shared = Constants()
     
-    let apipath = ""
+    let BASE_PATH = "https://api.jikan.moe/v4/anime"
 }

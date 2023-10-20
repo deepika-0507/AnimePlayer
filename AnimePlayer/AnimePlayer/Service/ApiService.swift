@@ -9,11 +9,45 @@
 
 import Foundation
 
+enum APIResponseErrors: Error {
+    case missingUrlError
+    case reponseCodeError
+    case decodingError
+}
+
 class ApiService {
+    
+    static let shared = ApiService()
+    
     let urlString = "https://api.jikan.moe/v4/anime"
     
     var overallData: [AnimeDataModel] = []
     var overAllRecomendedAnime: [EntryModel] = []
+    
+    func genericMethod<T: Codable>(urlString: String) async throws -> T {
+        guard let url = URL(string: urlString) else {
+            throw APIResponseErrors.missingUrlError
+        }
+        
+        let (data, response) = try await URLSession.shared.data(from: url)
+        
+        if let response = response as? HTTPURLResponse, response.statusCode != 200 {
+            throw APIResponseErrors.reponseCodeError
+        }
+        
+        do {
+            let decoder = JSONDecoder()
+            decoder.keyDecodingStrategy = .convertFromSnakeCase
+            let decodedData = try decoder.decode(T.self, from: data)
+            return decodedData
+        } catch {
+            throw APIResponseErrors.decodingError
+        }
+    }
+}
+
+extension ApiService {
+
     
     func getAnimeForHomeScreen(page: Int) async throws -> [AnimeDataModel] {
         let urls = urlString+"?page=\(page)"
@@ -30,9 +64,6 @@ class ApiService {
                 throw APIResponseErrors.reponseCodeError
             }
         }
-        
-//        let dataString = String(decoding: data, as: UTF8.self)
-//        print("Data: \(dataString)")
         
         do {
             let decoder = JSONDecoder()
@@ -57,11 +88,7 @@ class ApiService {
         
         let (data, response) = try await URLSession.shared.data(from: url)
         
-//        let dataString = String(decoding: data, as: UTF8.self)
-//        print("Data: \(dataString)")
-        
         if let response = response as? HTTPURLResponse, response.statusCode != 200 {
-//            print("DEBUG: response:\(response)")
             throw APIResponseErrors.reponseCodeError
         }
         
@@ -83,11 +110,7 @@ class ApiService {
         
         let (data, response) = try await URLSession.shared.data(from: url)
         
-//        let dataString = String(decoding: data, as: UTF8.self)
-//        print("Data: \(dataString)")
-        
         if let response = response as? HTTPURLResponse, response.statusCode != 200 {
-            print("DEBUG: response:\(response)")
             throw APIResponseErrors.reponseCodeError
         }
         
@@ -103,10 +126,4 @@ class ApiService {
             throw APIResponseErrors.decodingError
         }
     }
-}
-
-enum APIResponseErrors: Error {
-    case missingUrlError
-    case reponseCodeError
-    case decodingError
 }
