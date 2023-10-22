@@ -11,7 +11,12 @@ class CacheDataManager {
     
     func storeData(key: String, value: Data) {
         let cacheDataModel = CacheDataModel(key: key, value: value, expirationDate: Date())
-        UserDefaults.standard.set(try? JSONEncoder().encode(cacheDataModel), forKey: key)
+//        UserDefaults.standard.set(try? JSONEncoder().encode(cacheDataModel), forKey: key)
+        do {
+            UserDefaults.standard.set(try JSONEncoder().encode(cacheDataModel), forKey: key)
+        } catch {
+            print("error decosing data:\(error.localizedDescription)")
+        }
     }
     
     func retrieveData(key: String) -> Data? {

@@ -29,7 +29,10 @@ class ApiService {
             throw APIResponseErrors.missingUrlError
         }
         
-        let (data, response) = try await URLSession.shared.data(from: url)
+        var urlRequest = URLRequest(url: url)
+        urlRequest.cachePolicy = .returnCacheDataElseLoad
+        
+        let (data, response) = try await URLSession.shared.data(for: urlRequest)
         
         if let response = response as? HTTPURLResponse, response.statusCode != 200 {
             throw APIResponseErrors.reponseCodeError
